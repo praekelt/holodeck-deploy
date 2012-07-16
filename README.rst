@@ -31,13 +31,16 @@ Deploy a local Vagrant instance like so::
     you@host$ cd holodeck-deploy
     you@host$ vagrant up
     you@host$ vagrant ssh
-    vagrant@lucid32$ sudo -i
-    root@lucid32$ cd /var/praekelt/holodeck
-    root@lucid32$ . ve/bin/activate
-    (ve)root@lucid32$ holodeck --config=holodeck.conf.py syncdb
-    (ve)root@lucid32$ holodeck --config=holodeck.conf.py migrate
-    (ve)root@lucid32$ /etc/init.d/nginx restart
-    (ve)root@lucid32$ supervisorctl reload
+    vagrant@precise64$ sudo su ubuntu
+    ubuntu@precise64$ cd /var/praekelt/holodeck
+    ubuntu@precise64$ . ve/bin/activate
+    (ve)ubuntu@precise64$ holodeck syncdb
+    (ve)ubuntu@precise64$ holodeck syncsharddbs
+    (ve)ubuntu@precise64$ holodeck collectstatic
+    (ve)ubuntu@precise64$ exit
+    vagrant@precise64$ sudo -i
+    root@precise64:~# /etc/init.d/nginx restart
+    root@precise64:~# supervisorctl reload
 
 Then access the Holodeck dashboard on `localhost port 4567 <http://localhost:4567/>`_.
 
