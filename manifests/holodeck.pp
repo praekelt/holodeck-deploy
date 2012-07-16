@@ -4,12 +4,6 @@ Exec {
     user => 'ubuntu',
 }
 
-# Update package index.
-exec { "update_apt":
-    command => "apt-get update",
-    user => "root",
-}
-
 # Install required packages.
 package { [
     "git-core",
@@ -21,8 +15,7 @@ package { [
     "supervisor",
     "nginx",
     ]:
-    ensure => latest,
-    subscribe => Exec['update_apt'];
+    ensure => installed,
 }
 
 # Ensure Ubuntu user exists
@@ -72,7 +65,7 @@ exec { 'create_virtualenv':
 }
 
 exec { 'install_packages':
-    command => '/bin/sh -c ". ve/bin/activate && pip install -r requirements.pip --upgrade && deactivate"',
+    command => '/bin/sh -c ". ve/bin/activate && pip install -r requirements.pip && deactivate"',
     cwd => '/var/praekelt/holodeck',
     subscribe => [
         Exec['create_virtualenv'],

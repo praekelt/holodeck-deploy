@@ -12,7 +12,8 @@ def provision():
         sudo('puppet ./manifests/holodeck.pp --modulepath ./manifests/modules')
     with cd('/var/praekelt/holodeck'):
         with prefix('. ve/bin/activate'):
-            sudo('holodeck --config=holodeck.conf.py syncdb')
-            sudo('holodeck --config=holodeck.conf.py migrate')
+            sudo('holodeck syncdb')
+            sudo('holodeck syncsharddbs')
+            sudo('holodeck collectstatic')
     restart()
     run('rm -rf ~/holodeck-deploy')
