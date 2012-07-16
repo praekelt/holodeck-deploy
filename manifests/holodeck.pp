@@ -20,7 +20,6 @@ package { [
     "python-virtualenv",
     "supervisor",
     "nginx",
-    "uwsgi",
     ]:
     ensure => latest,
     subscribe => Exec['update_apt'];
