@@ -5,7 +5,7 @@ def restart():
     sudo('supervisorctl reload')
 
 def provision():
-    sudo('apt-get update')
+    #sudo('apt-get update')
     #sudo('apt-get install -y git-core puppet')
     run('git clone https://github.com/praekelt/holodeck-deploy.git')
     with cd('holodeck-deploy'):
