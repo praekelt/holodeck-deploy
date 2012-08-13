@@ -34,7 +34,7 @@ file { "/var/praekelt/":
 
 # Clone and update repo.
 exec { "clone_repo":
-    command => "git clone https://github.com/praekelt/holodeck-deploy.git holodeck",
+    command => "git clone http://github.com/praekelt/holodeck-deploy.git holodeck",
     cwd => "/var/praekelt",
     unless => "test -d /var/praekelt/holodeck",
     subscribe => [
