@@ -12,3 +12,5 @@ DATABASES = {
 }
 
 PUBLIC = False
+
+TIME_ZONE = 'Africa/Johannesburg'
