@@ -1,5 +1,7 @@
 from holodeck.conf.defaults import *
 
+DEBUG = False
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -11,6 +13,6 @@ DATABASES = {
     }
 }
 
-PUBLIC = False
-
 TIME_ZONE = 'Africa/Johannesburg'
+
+SITE_URL = 'http://holodeck.praekelt.com'
